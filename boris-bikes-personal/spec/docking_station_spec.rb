@@ -1,8 +1,17 @@
 require 'docking_station'
 
 describe DockingStation do
-  it 'releases bike' do
-    expect(subject).to respond_to(:release_bike)
+  
+  describe '#release_bike' do
+    it 'raises error if there is no bike' do
+      expect { subject.release_bike }.to raise_error "There is no bike, only Zuul"
+    end
+
+    it 'releases bike if one is avaiable' do
+      bike = Bike.new
+      subject.dock(bike)
+      expect(subject.release_bike).to eq(bike)
+    end
   end
 
   it 'gets a bike' do

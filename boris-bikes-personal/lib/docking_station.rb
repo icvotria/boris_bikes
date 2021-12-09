@@ -6,6 +6,7 @@ class DockingStation
   end
 
   def release_bike
+    fail 'There is no bike, only Zuul' unless @bike
     @bike
   end
 
